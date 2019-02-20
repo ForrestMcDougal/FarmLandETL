@@ -1,3 +1,5 @@
+config.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -39,8 +41,6 @@ pip-delete-this-directory.txt
 htmlcov/
 .tox/
 
-# config
-config.py
 .coverage
 .coverage.*
 .cache
