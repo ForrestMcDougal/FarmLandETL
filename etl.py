@@ -30,7 +30,8 @@ start = datetime.datetime.now()
 for i in range(1, pages_to_scrape + 1):
     intermediate = datetime.datetime.now()
     diff = intermediate - start
-    print(f'page {i}, {diff.seconds} passed, {documents_added} documents added')
+    print(f'page {i}, {diff.seconds} seconds passed, {documents_added} \
+        documents added')
     url = f'https://www.landsofamerica.com/United-States/farms/page-{i}'
     div_tops = scrape_land.get_all_land(url)
     for div_top in div_tops:
