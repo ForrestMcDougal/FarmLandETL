@@ -14,9 +14,6 @@ import pandas as pd
 # COAREA - area of county
 # COAREALAND - land area of county
 
-
-# df = pd.read_csv('https://query.data.world/s/d4svu353zh227c66s7tix7gav44gkz')
-
 # Pass zipcode and dataframe to return list of dictionaries of info for particular zipcode
 
 

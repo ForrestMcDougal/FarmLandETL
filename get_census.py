@@ -6,6 +6,16 @@ c = Census(census_api_key, year=2017)
 
 
 def census_data(zipcode):
+    """
+    returns census data
+
+    Arguments:
+        zipcode {int} -- zip code of interest
+
+    Returns:
+        dict -- data about zip code
+    """
+
     census_data = c.acs5.get(("NAME",
                               "B19013_001E",
                               "B01003_001E",
@@ -16,4 +26,4 @@ def census_data(zipcode):
                               "B17001_002E"),
                              {'for': (f'zip code tabulation area: {zipcode}')})
 
-    return census_data
+    return census_data[0]
