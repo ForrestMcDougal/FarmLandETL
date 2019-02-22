@@ -13,6 +13,6 @@ def get_weather(zip_code):
         dict -- weather data
     """
 
-    settings = {"units": "imperial", "appid": api_key}
+    settings = {"units": "imperial", "appid": weather_api_key}
     zip_weather = owm.get_current(zip=zip_code, **settings)
     return zip_weather

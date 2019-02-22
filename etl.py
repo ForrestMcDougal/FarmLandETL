@@ -6,6 +6,7 @@ import pandas as pd
 import scrape_land
 import zip_county
 import get_weather
+import get_census
 
 # initiate MongoDB databse with name `landDB`
 conn = 'mongodb://localhost:27017'
@@ -20,8 +21,8 @@ db.farms.remove({})
 pages_to_scrape = 1
 
 df = pd.read_csv('https://query.data.world/s/d4svu353zh227c66s7tix7gav44gkz')
-df.rename(columns={'ZCTA5': 'Zipcode'}, inplace=True)
-df.set_index("Zipcode")
+df = df.rename(columns={'ZCTA5': 'Zipcode'})
+df = df.set_index("Zipcode")
 
 for i in range(1, pages_to_scrape + 1):
     url = f'https://www.landsofamerica.com/United-States/farms/page-{i}'
@@ -41,6 +42,12 @@ for i in range(1, pages_to_scrape + 1):
                     land_info['zip_data'] = zip_data
             except:
                 pass
+            try:
+                census_data = get_census.census_data(zip_code)
+                land_info['census_data'] = census_data
+            except:
+                pass
             db.farms.insert_one(land_info)
+            print('added')
         except:
             pass
